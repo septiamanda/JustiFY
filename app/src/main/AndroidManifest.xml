@@ -2,14 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-<<<<<<< HEAD
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-=======
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
->>>>>>> 9f99fd6067425434f218b1c8384c7b55860c703c
 
     <application
         android:allowBackup="true"
@@ -22,7 +17,6 @@
         android:theme="@style/Theme.JustiFY"
         tools:targetApi="31">
         <activity
-<<<<<<< HEAD
             android:name=".DetailUU"
             android:exported="false" />
         <activity
@@ -30,7 +24,8 @@
             android:exported="false" />
         <activity
             android:name=".UU"
-=======
+            android:exported="false" />
+        <activity
             android:name=".UpdateActivity"
             android:exported="false" />
         <activity
@@ -53,7 +48,6 @@
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
->>>>>>> 9f99fd6067425434f218b1c8384c7b55860c703c
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -62,7 +56,6 @@
             </intent-filter>
         </activity>
         <activity
-<<<<<<< HEAD
             android:name=".Berita"
             android:exported="false"/>
         <activity
@@ -70,10 +63,9 @@
             android:exported="false" />
         <activity
             android:name=".TambahBeritaActivity"
-=======
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
->>>>>>> 9f99fd6067425434f218b1c8384c7b55860c703c
             android:exported="false" />
     </application>
-
 </manifest>

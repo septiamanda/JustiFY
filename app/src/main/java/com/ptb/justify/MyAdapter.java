@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<BViewHolder> {
 
     private Context context;
     private List<BeritaClass> dataList;
@@ -33,13 +33,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.berita, parent, false);
-        return new MyViewHolder(view);
+        return new BViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BViewHolder holder, int position) {
         Glide.with(context).load(dataList.get(position).getBeritaImage()).into(holder.recImage);
         holder.recTitle.setText(dataList.get(position).getBeritaTitle());
         holder.recDesc.setText(dataList.get(position).getBeritaDesc());
@@ -69,12 +69,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     }
 }
 
-class MyViewHolder extends RecyclerView.ViewHolder{
+class BViewHolder extends RecyclerView.ViewHolder{
 
     ImageView recImage;
     TextView recTitle,recDesc;
     CardView recCard;
-    public MyViewHolder(@NonNull View itemView) {
+    public BViewHolder(@NonNull View itemView) {
         super(itemView);
 
         recImage = itemView.findViewById(R.id.recImage);
