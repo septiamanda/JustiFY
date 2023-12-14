@@ -2,5 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="grey">#758D93</color>
+    <color name="blue">#223A5C</color>
+    <color name="birumuda">#A3B5C1</color>
+    <color name="bayangan">#42000000</color>
+    <color name="peach">#cd5c5c</color>
+    <color name="Abu2">#EDEDED</color>
+
+
 </resources>
