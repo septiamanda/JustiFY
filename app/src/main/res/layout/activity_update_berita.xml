@@ -11,7 +11,7 @@
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="@color/grey"
+        android:background="@color/birumuda"
         android:orientation="horizontal"
         tools:ignore="MissingConstraints">
 
