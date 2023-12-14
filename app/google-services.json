@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "209946401499",
+    "firebase_url": "https://justify-8250b-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "justify-8250b",
+    "storage_bucket": "justify-8250b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209946401499:android:fed80e9731e3fd2eb04afe",
+        "android_client_info": {
+          "package_name": "com.ptb.justify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJchjVHk9HZj4MF5gAVU9Md--PLvVJdM0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
