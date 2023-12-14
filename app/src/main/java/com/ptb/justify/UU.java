@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.SearchView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +27,7 @@ public class UU extends AppCompatActivity {
     AdapterUU adapter;
     List<UUClass> dataList;
     UUClass uuData;
+    ImageView close;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,15 @@ public class UU extends AppCompatActivity {
         setContentView(R.layout.activity_uu);
 
         recyclerView = findViewById(R.id.rv_uu);
+        close = findViewById(R.id.imageView);
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UU.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(UU.this, 1);
         recyclerView.setLayoutManager(gridLayoutManager);
