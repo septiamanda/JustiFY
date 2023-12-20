@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PilihangandaActivity">
+
+    <LinearLayout
+        android:layout_height="75dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/basic">
+
+        <ImageView
+            android:id="@+id/imageLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="14dp"
+            android:src="@drawable/ic_left"
+            android:importantForAccessibility="no"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/textViewPilGan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="14dp"
+            android:text="@string/pil_gan"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/totalsoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:textStyle="bold"
+        android:text="@string/total_soal"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/teks_soal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="18dp"
+            android:textStyle="bold"
+            android:text="@string/soal"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/opsibutton_A"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/opsi_a"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/basic"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="15dp"/>
+
+        <Button
+            android:id="@+id/opsibutton_B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/opsi_b"
+            android:textSize="14sp"
+            android:backgroundTint="@color/basic"
+            android:textColor="@color/black"
+            android:layout_marginBottom="15dp"/>
+
+        <Button
+            android:id="@+id/opsibutton_C"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/opsi_c"
+            android:textSize="14sp"
+            android:backgroundTint="@color/basic"
+            android:textColor="@color/black"
+            android:layout_marginBottom="15dp"/>
+
+        <Button
+            android:id="@+id/opsibutton_D"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/opsi_d"
+            android:backgroundTint="@color/basic"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="15dp"/>
+
+        <Button
+            android:id="@+id/ulang_permainan"
+            android:layout_width="193dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="@color/blue"
+            android:textColor="@color/white"
+            android:text="@string/ulang_permainan"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</LinearLayout>
