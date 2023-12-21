@@ -73,7 +73,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(HomeActivity.this, "aaaaa", Toast.LENGTH_SHORT).show();
-                Intent home = new Intent(getApplicationContext(), MainActivity.class);
+                Intent home = new Intent(getApplicationContext(), KuisActivity.class);
                 startActivity(home);
             }
         });

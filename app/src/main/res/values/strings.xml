@@ -10,7 +10,6 @@
     <string name="pertanyaan">pertanyaan</string>
     <string name="next">Next</string>
     <string name="pengetahuan_dasar">Pengetahuan Dasar</string>
-    <string name="app_name">JustiFY_Testing</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
