@@ -15,5 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "JustiFY"
 include(":app")
-include(":app")
- 
