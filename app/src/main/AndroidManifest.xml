@@ -33,6 +33,12 @@
         </intent-filter>
         </activity>
         <activity
+            android:name=".ForumDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForumAspirasiActivity"
+            android:exported="false" />
+        <activity
             android:name=".AboutAplikasi"
             android:exported="false" />
         <activity

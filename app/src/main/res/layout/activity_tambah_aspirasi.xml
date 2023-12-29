@@ -78,14 +78,14 @@
                     android:id="@+id/aspirasi_gambar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_add"
-                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ic_addgambar"
+                    android:layout_marginTop="20dp"
                     android:scaleType="fitCenter"/>
 
                 <EditText
                     android:id="@+id/aspirasi_judul"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/rectangle"
                     android:hint="Judul Aspirasi"
@@ -97,7 +97,7 @@
                 <EditText
                     android:id="@+id/aspirasi_domisili"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/rectangle"
                     android:hint="Domisili Anda"

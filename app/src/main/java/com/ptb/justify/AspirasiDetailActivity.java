@@ -26,9 +26,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class AspirasiDetailActivity extends AppCompatActivity {
 
-    TextView detailtitle, detaildesc, detailalamat, detailHapusText, detailEditText;
+    TextView detailtitle, detaildesc, detailalamat, detailHapusText, detailEditText, detailTime;
     ImageView detailimage, detailkembali;
 
     FloatingActionButton detailHapus, detailEdit;
@@ -55,6 +60,7 @@ public class AspirasiDetailActivity extends AppCompatActivity {
         detailHapusText = findViewById(R.id.detail_hapus_text);
         detailEditText = findViewById(R.id.detail_edit_text);
         detailkembali = findViewById(R.id.detail_kembali);
+        detailTime = findViewById(R.id.detail_time);
 
         detailHapus.setVisibility(View.GONE);
         detailEdit.setVisibility(View.GONE);
@@ -64,6 +70,8 @@ public class AspirasiDetailActivity extends AppCompatActivity {
         isAllFabsVisible = false;
 
         detailFab.shrink();
+
+        fetchTimestampFromFirebase();
 
         detailFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,5 +163,35 @@ public class AspirasiDetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void fetchTimestampFromFirebase() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("timestamp");
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Long timestamp = dataSnapshot.getValue(Long.class);
+                String formattedDate = getFormattedDate(timestamp);
+                detailTime.setText(formattedDate);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle Database Error
+            }
+        });
+    }
+
+    private String getFormattedDate(Long timestamp) {
+        if (timestamp == null) {
+            return null;
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(timestamp);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
+        return simpleDateFormat.format(calendar.getTime());
     }
 }

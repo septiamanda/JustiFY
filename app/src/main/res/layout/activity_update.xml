@@ -78,14 +78,15 @@
                     android:id="@+id/update_gambar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_add"
-                    android:layout_marginTop="8dp"
-                    android:scaleType="fitCenter"/>
+                    android:src="@drawable/ic_editgambar"
+                    android:layout_marginTop="20dp"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="TODO" />
 
                 <EditText
                     android:id="@+id/update_judul"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/rectangle"
                     android:hint="Judul Aspirasi"
@@ -97,7 +98,7 @@
                 <EditText
                     android:id="@+id/update_domisili"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/rectangle"
                     android:hint="Domisili Anda"

@@ -88,6 +88,7 @@ public class TambahAspirasiActivity extends AppCompatActivity {
         kirim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 saveData();
             }
         });
@@ -134,6 +135,7 @@ public class TambahAspirasiActivity extends AppCompatActivity {
         DataActivity dataActivity = new DataActivity(imageURL, title, alamat, desc);
         // menambahkan waktu
         dataActivity.setTimestamp();
+        dataActivity.setUid(uid);
 
         //mengganti child dari tittle menjadi currentDate,
         //karena kita akan mengupdate title as well and it may affect child value
