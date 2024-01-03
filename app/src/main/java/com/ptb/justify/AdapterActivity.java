@@ -47,7 +47,6 @@ public class AdapterActivity extends RecyclerView.Adapter<MyViewHolder> {
         Glide.with(context).load(datalist.get(position).getImageURL()).into(holder.gambar);
         holder.title.setText(dataActivity.getTitle());
         holder.alamat.setText(dataActivity.getAlamat());
-        holder.desc.setText(dataActivity.getDesc());
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +57,8 @@ public class AdapterActivity extends RecyclerView.Adapter<MyViewHolder> {
                 intent.putExtra("alamat", datalist.get(holder.getAdapterPosition()).getAlamat());
                 intent.putExtra("desc", datalist.get(holder.getAdapterPosition()).getDesc());
                 intent.putExtra("Key", datalist.get(holder.getAdapterPosition()).getKey());
+                long timestamp = (long) datalist.get(position).getTimestamp();
+                intent.putExtra("AspirasiDate", timestamp);
                 context.startActivity(intent);
             }
         });
@@ -79,7 +80,7 @@ class MyViewHolder extends RecyclerView.ViewHolder{
 
     // inisiasi
     ImageView gambar;
-    TextView title, alamat, desc;
+    TextView title, alamat;
     CardView card;
 
     public MyViewHolder(@NonNull View itemView) {
@@ -89,7 +90,6 @@ class MyViewHolder extends RecyclerView.ViewHolder{
         gambar = itemView.findViewById(R.id.recycler_gambar);
         title = itemView.findViewById(R.id.recycler_judul);
         alamat = itemView.findViewById(R.id.recycler_domisili);
-        desc = itemView.findViewById(R.id.recycler_isi);
 
     }
 }

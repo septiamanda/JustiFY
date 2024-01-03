@@ -54,6 +54,7 @@ public class ForumAspirasiActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(ForumAspirasiActivity.this);
         recyclerView.setLayoutManager(layoutManager);
 
+
         AlertDialog.Builder builder = new AlertDialog.Builder(ForumAspirasiActivity.this);
         builder.setCancelable(false);
         builder.setView(R.layout.activity_progres);
@@ -68,7 +69,6 @@ public class ForumAspirasiActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("Android Tutorial");
 
         dialog.show();
-
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -77,18 +77,15 @@ public class ForumAspirasiActivity extends AppCompatActivity {
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                     // Iterasi semua child (user) di bawah "Android Tutorial"
                     String uid = userSnapshot.getKey(); // Mendapatkan UID user
-
                     for (DataSnapshot aspirasiSnapshot : userSnapshot.getChildren()) {
-
                         // Iterasi semua child (data aspirasi) di bawah UID user
                         DataActivity dataActivity = aspirasiSnapshot.getValue(DataActivity.class);
-
                         if (dataActivity != null) {
                             dataActivity.setKey(aspirasiSnapshot.getKey());
                             datalist.add(dataActivity);
                             dataActivity.setUid(uid);
                         }
-                        adapterForumAspirasi.setDatalist(datalist);  // Menggunakan list kelas
+                        adapterForumAspirasi.setDatalist(datalist);
                         adapterForumAspirasi.notifyDataSetChanged();
                         dialog.dismiss();
                     }

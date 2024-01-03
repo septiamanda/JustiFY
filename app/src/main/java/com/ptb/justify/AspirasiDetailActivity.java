@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -71,8 +72,6 @@ public class AspirasiDetailActivity extends AppCompatActivity {
 
         detailFab.shrink();
 
-        fetchTimestampFromFirebase();
-
         detailFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,32 +123,36 @@ public class AspirasiDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Android Tutorial").child(uid).child(key);
-                databaseReference.removeValue();
+
+                // Hapus dari Firebase Database
                 databaseReference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()) {
-                            Toast.makeText(AspirasiDetailActivity.this, "Berhasil Menghapus", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), AspirasiActivity.class));
-                            finish();
+                            // Jika penghapusan dari database berhasil, hapus dari Firebase Storage
+                            FirebaseStorage storage = FirebaseStorage.getInstance();
+                            StorageReference storageReference = storage.getReferenceFromUrl(imageUrl);
+
+                            storageReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()) {
+                                        Toast.makeText(AspirasiDetailActivity.this, "Data dan Gambar Behasil Dihapus", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(), AspirasiActivity.class));
+                                        finish();
+                                    } else {
+                                        Toast.makeText(AspirasiDetailActivity.this, "Terjadi Kesalahan Saat Menghapus Gambar", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                         } else {
-                            Toast.makeText(AspirasiDetailActivity.this, "Terjadi Kesalahan Saat Menghapus", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-                FirebaseStorage storage = FirebaseStorage.getInstance();
-                StorageReference storageReference = storage.getReferenceFromUrl(imageUrl);
-                storageReference.delete();
-                storageReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()) {
-                            Toast.makeText(AspirasiDetailActivity.this, "Gambar Behasil Dihapus", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AspirasiDetailActivity.this, "Terjadi Kesalahan Saat Menghapus Data", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
             }
         });
+
 
         detailEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,35 +166,16 @@ public class AspirasiDetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        String date = timestampToString(getIntent().getExtras().getLong("AspirasiDate"));
+        detailTime.setText(date);
     }
 
-    private void fetchTimestampFromFirebase() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("timestamp");
 
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Long timestamp = dataSnapshot.getValue(Long.class);
-                String formattedDate = getFormattedDate(timestamp);
-                detailTime.setText(formattedDate);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle Database Error
-            }
-        });
-    }
-
-    private String getFormattedDate(Long timestamp) {
-        if (timestamp == null) {
-            return null;
-        }
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(timestamp);
-
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
-        return simpleDateFormat.format(calendar.getTime());
+    private String timestampToString(Long time) {
+        Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
+        calendar.setTimeInMillis(time);
+        String date = DateFormat.format("dd-MM-yyyy", calendar).toString();
+        return date;
     }
 }

@@ -65,16 +65,14 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
                 android:id="@+id/detail_gambar"
                 android:padding="10dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/ic_detailgambar"
                 android:scaleType="fitCenter"/>
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -45,21 +45,27 @@ public class AdapterForumAspirasi extends RecyclerView.Adapter<ForumViewHolder> 
     public void onBindViewHolder(@NonNull ForumViewHolder holder, int position) {
         DataActivity dataActivity = datalist.get(position);
         Glide.with(context).load(datalist.get(position).getImageURL()).into(holder.gambar);
+        Glide.with(context).load(datalist.get(position).getUserPhoto()).into(holder.userprofile);
         holder.title.setText(dataActivity.getTitle());
         holder.alamat.setText(dataActivity.getAlamat());
         holder.desc.setText(dataActivity.getDesc());
-        holder.uid.setText(dataActivity.getUid());
+        holder.username.setText(dataActivity.getUsername());
+        holder.time.setText(dataActivity.getFormatedDate());
 
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ForumDetailActivity.class);
+                intent.putExtra("userprofile", datalist.get(holder.getAdapterPosition()).getUserPhoto());
+                intent.putExtra("username", datalist.get(holder.getAdapterPosition()).getUsername());
+                long timestamp = (long) datalist.get(position).getTimestamp();
+                intent.putExtra("time", timestamp);
+                intent.putExtra("alamat", datalist.get(holder.getAdapterPosition()).getAlamat());
                 intent.putExtra("gambar", datalist.get(holder.getAdapterPosition()).getImageURL());
                 intent.putExtra("title", datalist.get(holder.getAdapterPosition()).getTitle());
-                intent.putExtra("alamat", datalist.get(holder.getAdapterPosition()).getAlamat());
                 intent.putExtra("desc", datalist.get(holder.getAdapterPosition()).getDesc());
-                intent.putExtra("Key", datalist.get(holder.getAdapterPosition()).getKey());
+                intent.putExtra("key", datalist.get(holder.getAdapterPosition()).getKey());
                 context.startActivity(intent);
             }
         });
@@ -80,19 +86,22 @@ public class AdapterForumAspirasi extends RecyclerView.Adapter<ForumViewHolder> 
 class ForumViewHolder extends RecyclerView.ViewHolder{
 
     // inisiasi
-    ImageView gambar;
-    TextView title, alamat, desc, uid;
+    ImageView gambar, userprofile;
+    TextView title, alamat, desc, username, time;
     CardView card;
 
     public ForumViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        card = itemView.findViewById(R.id.recycler_cardForum);
-        uid = itemView.findViewById(R.id.recycler_uid);
+        card = itemView.findViewById(R.id.recycler_forum);
+        userprofile = itemView.findViewById(R.id.profile_user);
+        username = itemView.findViewById(R.id.forum_recycler_username);
+        time = itemView.findViewById(R.id.forum_recycler_time);
+        alamat = itemView.findViewById(R.id.forum_recycler_domisili);
         gambar = itemView.findViewById(R.id.forum_gambar);
-        title = itemView.findViewById(R.id.forum_judul);
-        alamat = itemView.findViewById(R.id.forum_domisili);
-        desc = itemView.findViewById(R.id.forum_isi);
+        title = itemView.findViewById(R.id.forum_recycler_judul);
+        desc = itemView.findViewById(R.id.forum_recycler_isi);
+
 
     }
 }
