@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,9 +27,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class AspirasiDetailActivity extends AppCompatActivity {
 
-    TextView detailtitle, detaildesc, detailalamat, detailHapusText, detailEditText;
+    TextView detailtitle, detaildesc, detailalamat, detailHapusText, detailEditText, detailTime;
     ImageView detailimage, detailkembali;
 
     FloatingActionButton detailHapus, detailEdit;
@@ -55,6 +61,7 @@ public class AspirasiDetailActivity extends AppCompatActivity {
         detailHapusText = findViewById(R.id.detail_hapus_text);
         detailEditText = findViewById(R.id.detail_edit_text);
         detailkembali = findViewById(R.id.detail_kembali);
+        detailTime = findViewById(R.id.detail_time);
 
         detailHapus.setVisibility(View.GONE);
         detailEdit.setVisibility(View.GONE);
@@ -116,32 +123,36 @@ public class AspirasiDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Android Tutorial").child(uid).child(key);
-                databaseReference.removeValue();
+
+                // Hapus dari Firebase Database
                 databaseReference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()) {
-                            Toast.makeText(AspirasiDetailActivity.this, "Berhasil Menghapus", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), AspirasiActivity.class));
-                            finish();
+                            // Jika penghapusan dari database berhasil, hapus dari Firebase Storage
+                            FirebaseStorage storage = FirebaseStorage.getInstance();
+                            StorageReference storageReference = storage.getReferenceFromUrl(imageUrl);
+
+                            storageReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()) {
+                                        Toast.makeText(AspirasiDetailActivity.this, "Data dan Gambar Behasil Dihapus", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(), AspirasiActivity.class));
+                                        finish();
+                                    } else {
+                                        Toast.makeText(AspirasiDetailActivity.this, "Terjadi Kesalahan Saat Menghapus Gambar", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                         } else {
-                            Toast.makeText(AspirasiDetailActivity.this, "Terjadi Kesalahan Saat Menghapus", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-                FirebaseStorage storage = FirebaseStorage.getInstance();
-                StorageReference storageReference = storage.getReferenceFromUrl(imageUrl);
-                storageReference.delete();
-                storageReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()) {
-                            Toast.makeText(AspirasiDetailActivity.this, "Gambar Behasil Dihapus", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AspirasiDetailActivity.this, "Terjadi Kesalahan Saat Menghapus Data", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
             }
         });
+
 
         detailEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,5 +166,16 @@ public class AspirasiDetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        String date = timestampToString(getIntent().getExtras().getLong("AspirasiDate"));
+        detailTime.setText(date);
+    }
+
+
+    private String timestampToString(Long time) {
+        Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
+        calendar.setTimeInMillis(time);
+        String date = DateFormat.format("dd-MM-yyyy", calendar).toString();
+        return date;
     }
 }

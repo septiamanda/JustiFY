@@ -16,22 +16,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JustiFY"
         tools:targetApi="31">
-
+        <activity
+            android:name=".DiscussionActivity"
+            android:exported="false" />
         <activity
             android:name=".FaqActivity"
             android:exported="false" />
-
         <activity
             android:name=".PilihangandaActivity"
             android:exported="false" />
-
         <activity
             android:name=".KuisActivity"
-            android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-        </intent-filter>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".ForumDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForumAspirasiActivity"
+            android:exported="false" />
         <activity
             android:name=".AboutAplikasi"
             android:exported="false" />
@@ -70,6 +76,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

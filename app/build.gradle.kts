@@ -10,7 +10,8 @@ android {
     defaultConfig {
         applicationId = "com.ptb.justify"
         minSdk = 30
-    compileSdk = 34
+        compileSdk = 34
+    }
 
     defaultConfig {
         applicationId = "com.ptb.justify"

@@ -33,22 +33,19 @@ import com.google.firebase.storage.UploadTask;
 import java.security.Key;
 
 public class UpdateActivity extends AppCompatActivity {
-
     ImageView updateImage, updateKembali;
     Button updateButton;
     EditText updateDesc, updateTitle, updateAlamat;
-    String title, desc, alamat;
+    String title, desc, alamat, username, userphoto, uid;
     String imageUrl;
     String key, oldImageUrl;
     Uri uri;
     DatabaseReference databaseReference;
     StorageReference storageReference;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
-
         updateButton = findViewById(R.id.update_kirim);
         updateDesc = findViewById(R.id.update_isi);
         updateImage = findViewById(R.id.update_gambar);
@@ -59,9 +56,7 @@ public class UpdateActivity extends AppCompatActivity {
         updateKembali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent detail = new Intent(getApplicationContext(), AspirasiDetailActivity.class);
-                startActivity(detail);
-                //disini kasi penanganan agar datanya dapat tersimpan, disini belum manda kasi penanganan, jdinya pas klik kembali di aplikasi datanya gaada
+                finish(); // Selesaikan aktivitas saat ini untuk kembali
             }
         });
 
@@ -79,7 +74,7 @@ public class UpdateActivity extends AppCompatActivity {
                                 }
                             }
                         } else {
-                            Toast.makeText(UpdateActivity.this, "No Image Selected", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UpdateActivity.this, "Tidak ada Gambar yang Dipilih", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -156,10 +151,16 @@ public class UpdateActivity extends AppCompatActivity {
         title = updateTitle.getText().toString().trim();
         alamat = updateAlamat.getText().toString();
         desc = updateDesc.getText().toString().trim();
+        username = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+        userphoto = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString();
+        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
 
         if (key != null) {
-            DataActivity dataActivity = new DataActivity(imageUrl, title, alamat, desc);
+            DataActivity dataActivity = new DataActivity(userphoto,username,imageUrl, title, alamat, desc, uid);
 
+            // Menambahkan timestamp
+            dataActivity.setTimestamp(System.currentTimeMillis());
             databaseReference.setValue(dataActivity).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {

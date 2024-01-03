@@ -22,6 +22,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -88,17 +90,20 @@ public class TambahAspirasiActivity extends AppCompatActivity {
         kirim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Inisialisasi timestamp dengan waktu sekarang
+                timestamp = System.currentTimeMillis();
                 saveData();
             }
         });
     }
 
     public void saveData() {
-
         String title = judul.getText().toString();
         String alamat = domisili.getText().toString();
         String desc = isi.getText().toString();
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String username = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+        String userphoto = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString();
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images").child(uid)
                 .child(uri.getLastPathSegment());
@@ -112,28 +117,29 @@ public class TambahAspirasiActivity extends AppCompatActivity {
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
                 Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                 while (!uriTask.isComplete());
                 Uri urlImage = uriTask.getResult();
                 imageURL = urlImage.toString();
-                uploadData(title, alamat, desc, uid);
+                uploadData(userphoto, username, title, alamat, desc, uid);
                 dialog.dismiss();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-
                 dialog.dismiss();
             }
         });
     }
-    // string berasal dari DataActivity.java
-    public void uploadData(String title, String alamat, String desc, String uid) {
 
-        DataActivity dataActivity = new DataActivity(imageURL, title, alamat, desc);
+
+    // string berasal dari DataActivity.java
+    public void uploadData(String userphoto, String username, String title, String alamat, String desc, String uid) {
+
+        DataActivity dataActivity = new DataActivity(userphoto, username, imageURL, title, alamat, desc, uid);
         // menambahkan waktu
-        dataActivity.setTimestamp();
+        dataActivity.setTimestamp(timestamp);
+        dataActivity.setUid(uid);
 
         //mengganti child dari tittle menjadi currentDate,
         //karena kita akan mengupdate title as well and it may affect child value

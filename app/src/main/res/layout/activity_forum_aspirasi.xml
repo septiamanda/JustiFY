@@ -5,20 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AspirasiActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ForumAspirasiActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:id="@+id/aspirasi_bacground"
+        android:id="@+id/forum_background"
         android:background="@color/birumuda"
         android:orientation="horizontal"
         android:elevation="7dp"
         tools:ignore="MissingConstraints">
 
         <ImageView
-            android:id="@+id/aspirasi_kembali"
+            android:id="@+id/forum_kembali"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/ic_back"
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/aspirasi_aspirasi"
-            android:text="Riwayat Aspirasi"
+            android:text="Forum Aspirasi"
             android:textStyle="bold"
             android:textSize="20dp"
             android:textColor="@color/white"
@@ -41,8 +41,8 @@
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/aspirasi_cari"
-        android:layout_below="@id/aspirasi_bacground"
+        android:id="@+id/forum_cari"
+        android:layout_below="@id/forum_background"
         android:layout_marginTop="10dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
@@ -60,24 +60,13 @@
         android:layout_height="match_parent"
         android:layout_marginTop="150dp">
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/aspirasi_recyclerview"
+            android:id="@+id/forum_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/aspirasi_cari"
+            android:layout_below="@+id/forum_cari"
             android:layout_alignParentTop="true"
             android:scrollbars="vertical"
-            tools:listitem="@layout/activity_recycler" />
+            tools:listitem="@layout/activity_recycler_forum" />
     </LinearLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/anspirasi_fab"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="40dp"
-        android:src="@drawable/ic_add"
-        app:backgroundTint="@color/blue"
-        app:tint="@color/white"/>
 
 </RelativeLayout>
