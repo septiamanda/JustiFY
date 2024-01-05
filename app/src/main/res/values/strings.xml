@@ -54,28 +54,41 @@
         31 Tahun 1999 tentang Pemberantasan Tindak Pidana Korupsi</string>
     <string name="det_uu1">Undang-Undang ini mengatur perubahan terhadap UU sebelumnya (UU No. 31/1999)
         dan memberikan dasar hukum bagi pemberantasan tindak pidana korupsi di Indonesia. UU ini mencakup
-        definisi, jenis-jenis tindak pidana korupsi, serta sanksi yang dapat diterapkan.</string>
+        definisi, jenis-jenis tindak pidana korupsi, serta sanksi yang dapat diterapkan.
+        \n\nUntuk lebih lengkapnya kunjungi link berikut ini. <a href = "https://peraturan.bpk.go.id/Details/44900/uu-no-20-tahun-2001">UU No.20 Tahun 2001</a>
+    </string>
     <string name="uu2">Undang-Undang Nomor 30 Tahun 2002 tentang Komisi Pemberantasan Tindak Pidana
         Korupsi (KPK)</string>
     <string name="det_uu2">UU ini membentuk KPK sebagai lembaga independen yang memiliki tugas pokok
         melakukan penyelidikan, penyidikan, penuntutan, dan pencegahan tindak pidana korupsi. KPK memiliki
-        kewenangan yang luas dan diharapkan dapat beroperasi secara efektif dan independen.</string>
+        kewenangan yang luas dan diharapkan dapat beroperasi secara efektif dan independen.
+        \n\nUntuk lebih lengkapnya kunjungi link berikut ini. <a href = "https://peraturan.bpk.go.id/Details/44493/uu-no-30-tahun-2002">UU No.30 Tahun 2002</a>
+    </string>
     <string name="uu3">Undang-Undang Nomor 31 Tahun 1999 tentang Pemberantasan Tindak Pidana Korupsi</string>
     <string name="det_uu3">UU ini adalah undang-undang awal yang mengatur tentang pemberantasan tindak pidana
-        korupsi di Indonesia. Undang-Undang ini kemudian mengalami perubahan melalui UU No. 20/2001.</string>
+        korupsi di Indonesia. Undang-Undang ini kemudian mengalami perubahan melalui UU No. 20/2001.
+        \n\nUntuk lebih lengkapnya kunjungi link berikut ini. <a href = "https://peraturan.bpk.go.id/Details/45350/uu-no-31-tahun-1999">UU No.31 Tahun 1999</a>
+    </string>
     <string name="uu4">Undang-Undang Nomor 8 Tahun 2010 tentang Pencegahan dan Pemberantasan Tindak
         Pidana Pencucian Uang</string>
     <string name="det_uu4">Meskipun lebih berfokus pada pencucian uang, undang-undang ini juga memiliki
         kaitan dengan korupsi karena seringkali tindak pidana korupsi diikuti oleh upaya pencucian uang.
-        UU ini memberikan dasar hukum untuk pencegahan dan pemberantasan pencucian uang.</string>
+        UU ini memberikan dasar hukum untuk pencegahan dan pemberantasan pencucian uang.
+        \n\nUntuk lebih lengkapnya kunjungi link berikut ini. <a href = "https://peraturan.bpk.go.id/Details/38547/uu-no-8-tahun-2010">UU No.8 Tahun 2010</a>
+    </string>
     <string name="uu5">Undang-Undang Nomor 19 Tahun 2019 tentang Perubahan Atas Undang-Undang Nomor
         30 Tahun 2002 tentang Komisi Pemberantasan Tindak Pidana Korupsi</string>
     <string name="det_uu5">Undang-Undang ini mengalami perubahan terhadap UU KPK dan menimbulkan perdebatan
         di masyarakat karena dinilai mengurangi independensi KPK. Perubahan tersebut mencakup penyesuaian
-        terhadap prosedur penyelidikan dan penyidikan, serta pengaturan terkait status pegawai KPK.</string>
+        terhadap prosedur penyelidikan dan penyidikan, serta pengaturan terkait status pegawai KPK.
+        \n\nUntuk lebih lengkapnya kunjungi link berikut ini. <a href = "https://peraturan.bpk.go.id/Details/122028/uu-no-19-tahun-2019">UU No.19 Tahun 2019</a>
+    </string>
     <string name="uu6">Undang-Undang Nomor 28 Tahun 1999 tentang Penyelenggara Negara yang Bersih dan Bebas
         dari Korupsi, Kolusi, dan Nepotisme (KPKKN)</string>
     <string name="det_uu6">UU ini memberikan landasan bagi pemberantasan korupsi, kolusi, dan nepotisme dalam
-        penyelenggaraan negara. Meskipun sebagian pasalnya telah dicabut, beberapa prinsipnya masih relevan.</string>
+        penyelenggaraan negara. Meskipun sebagian pasalnya telah dicabut, beberapa prinsipnya masih relevan.
+        \n\nUntuk lebih lengkapnya kunjungi link berikut ini. <a href = "https://peraturan.bpk.go.id/Details/45345/uu-no-28-tahun-1999">UU No.28 Tahun 1999</a>
+    </string>
     <string name="about">Tentang Aplikasi</string>
+    <string name="title_activity_lokasi">Lokasi</string>
 </resources>
