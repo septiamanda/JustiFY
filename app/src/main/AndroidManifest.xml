@@ -17,9 +17,6 @@
         android:theme="@style/Theme.JustiFY"
         tools:targetApi="31">
         <activity
-            android:name=".DiscussionActivity"
-            android:exported="false" />
-        <activity
             android:name=".FaqActivity"
             android:exported="false" />
         <activity
