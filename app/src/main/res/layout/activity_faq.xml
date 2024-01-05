@@ -14,20 +14,20 @@
         android:background="@color/basic">
 
         <ImageView
-            android:id="@+id/closeFaq"
+            android:id="@+id/closeFAQ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="14dp"
+            android:layout_marginStart="12dp"
             android:src="@drawable/close"
             android:importantForAccessibility="no" />
 
         <TextView
-            android:id="@+id/about"
+            android:id="@+id/FAQ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="18dp"
             android:text="@string/faq_list"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -41,7 +41,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/rv_faq">
+            android:id="@+id/rv_faq"
+            tools:listitem="@layout/layout_faq">
         </androidx.recyclerview.widget.RecyclerView>
 
     </RelativeLayout>
