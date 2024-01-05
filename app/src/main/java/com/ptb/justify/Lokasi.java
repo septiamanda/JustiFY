@@ -43,15 +43,15 @@ private ActivityLokasiBinding binding;
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng lok1 = new LatLng(-0.85510, 100.33684);
+        LatLng lok1 = new LatLng(-0.855219, 100.336839);
         mMap.addMarker(new MarkerOptions().position(lok1).title("KPK Kota Padang"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(lok1));
 
-        LatLng lok2 = new LatLng(-0.875468, 100.369641);
+        LatLng lok2 = new LatLng(-0.875484, 100.369642);
         mMap.addMarker(new MarkerOptions().position(lok2).title("KPK Prov.Sumbar"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(lok2));
 
-        LatLng lok3 = new LatLng(-0.87632, 100.36999);
+        LatLng lok3 = new LatLng(-0.876338, 100.369989);
         mMap.addMarker(new MarkerOptions().position(lok3).title("Lembaga KPK Sumbar"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(lok3));
     }

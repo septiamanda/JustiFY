@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class DetailUU extends AppCompatActivity {
         if (bundle != null){
             detTitle.setText(bundle.getInt("Title"));
             detDesc.setText(bundle.getInt("Desc"));
+            detDesc.setMovementMethod(LinkMovementMethod.getInstance());
         }
 
         close.setOnClickListener(new View.OnClickListener() {
