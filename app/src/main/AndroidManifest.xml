@@ -36,9 +36,6 @@
             android:name=".ForumAspirasiActivity"
             android:exported="false" />
         <activity
-            android:name=".AboutAplikasi"
-            android:exported="false" />
-        <activity
             android:name=".DetailUU"
             android:exported="false" />
         <activity
