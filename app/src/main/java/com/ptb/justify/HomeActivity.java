@@ -25,7 +25,7 @@ public class HomeActivity extends AppCompatActivity {
     FirebaseUser currentUser;
     private Uri pickedImgUri = null;
 
-    private CardView ic1, ic2, ic3, ic4, ic6, ic7, ic8, ic9;
+    private CardView ic1, ic2, ic3, ic4, ic5, ic6, ic7, ic8, ic9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         ic2 = findViewById(R.id.home_faq);
         ic3 = findViewById(R.id.home_aspirasi);
         ic4 = findViewById(R.id.home_forum);
+        ic5 = findViewById(R.id.home_lokasi);
         ic6 = findViewById(R.id.home_game);
         ic7 = findViewById(R.id.home_artikel);
         ic8 = findViewById(R.id.home_berita);
@@ -80,6 +81,15 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(HomeActivity.this, "Selamat Datang di Forum Aspirasi", Toast.LENGTH_SHORT).show();
                 Intent home = new Intent(getApplicationContext(), ForumAspirasiActivity.class);
+                startActivity(home);
+            }
+        });
+
+        ic5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomeActivity.this, "Ayo Temukan", Toast.LENGTH_SHORT).show();
+                Intent home = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(home);
             }
         });
