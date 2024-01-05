@@ -102,7 +102,7 @@ public class HomeActivity extends AppCompatActivity {
         ic8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "aaaaa", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "Berita", Toast.LENGTH_SHORT).show();
                 Intent home = new Intent(getApplicationContext(), Berita.class);
                 startActivity(home);
             }

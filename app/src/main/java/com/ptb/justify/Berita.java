@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.content.Intent;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +38,8 @@ public class Berita extends AppCompatActivity {
         setContentView(R.layout.activity_berita);
 
         ImageView imageView3 = findViewById(R.id.imageView3);
+        ImageView history = findViewById(R.id.history);
+        ImageView close = findViewById(R.id.btnclose);
         recyclerView = findViewById(R.id.recyclerView);
         searchView = findViewById(R.id.search);
         searchView.clearFocus();
@@ -52,25 +55,34 @@ public class Berita extends AppCompatActivity {
 
         dataList = new ArrayList<>();
 
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String uid = auth.getCurrentUser().getUid();
+
         adapter = new MyAdapter(Berita.this, dataList);
         recyclerView.setAdapter(adapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Android Berita");
         dialog.show();
 
-        eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 dataList.clear();
                 for (DataSnapshot itemSnapshot: snapshot.getChildren()){
-                    BeritaClass beritaClass = itemSnapshot.getValue(BeritaClass.class);
-                    beritaClass.setKey(itemSnapshot.getKey());
-                    dataList.add(beritaClass);
+                    String uid = itemSnapshot.getKey();
+                    for (DataSnapshot beritaSnapshot : itemSnapshot.getChildren()){
+                        BeritaClass beritaClass = beritaSnapshot.getValue(BeritaClass.class);
+                        if(beritaClass != null){
+                            beritaClass.setKey(beritaSnapshot.getKey());
+                            dataList.add(beritaClass);
+                            beritaClass.setUid(uid);
+                        }
+                        adapter.setDataList(dataList);
+                        adapter.notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
 
                 }
-                adapter.setDataList(dataList);
-                adapter.notifyDataSetChanged();
-                dialog.dismiss();
             }
 
             @Override
@@ -89,6 +101,22 @@ public class Berita extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 searchList(newText);
                 return true;
+            }
+        });
+
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Berita.this, RiwayatBerita.class);
+                startActivity(intent);
+            }
+        });
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Berita.this, HomeActivity.class);
+                startActivity(intent);
             }
         });
 
