@@ -35,9 +35,20 @@
                 android:text="Title"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginEnd="10dp"
+                android:hint="Time"
+                android:layout_gravity="end"
+                android:textSize="15sp"
+                android:textColor="@color/blue"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -47,15 +58,14 @@
                 android:textSize="8sp"
                 android:textColor="@color/black"
                 android:maxLines="0"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginStart="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/timec"
-                android:text="Time"
+                android:id="@+id/username"
+                android:text="username"
                 android:textSize="8sp"
                 android:textColor="@color/black"
                 android:maxLines="0"

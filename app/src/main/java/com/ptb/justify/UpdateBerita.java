@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -34,7 +35,7 @@ public class UpdateBerita extends AppCompatActivity {
     ImageView updateImage;
     Button updateButton;
     EditText updateDesc, updateTitle;
-    String title, desc;
+    String title, desc, username, userphoto, uid;
     String imageUrl;
     String key, oldImageURL;
     Uri uri;
@@ -74,7 +75,9 @@ public class UpdateBerita extends AppCompatActivity {
             key = bundle.getString("Key");
             oldImageURL = bundle.getString("Image");
         }
-        databaseReference = FirebaseDatabase.getInstance().getReference("Android Berita").child(key);
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String uid = auth.getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Android Berita").child(uid).child(key);
 
         updateImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +91,7 @@ public class UpdateBerita extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveData();
-                Intent intent = new Intent(UpdateBerita.this, Berita.class);
+                Intent intent = new Intent(UpdateBerita.this, RiwayatBerita.class);
                 startActivity(intent);
             }
         });
@@ -122,8 +125,11 @@ public class UpdateBerita extends AppCompatActivity {
     public void updateData(){
         title = updateTitle.getText().toString().trim();
         desc = updateDesc.getText().toString().trim();
+        username = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+        userphoto = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        BeritaClass beritaClass = new BeritaClass(title, desc, imageUrl);
+        BeritaClass beritaClass = new BeritaClass(title, desc, imageUrl, userphoto, username, uid);
+        beritaClass.setTimestamp(System.currentTimeMillis());
 
         databaseReference.setValue(beritaClass).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

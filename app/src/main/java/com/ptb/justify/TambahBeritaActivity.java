@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -42,6 +43,7 @@ public class TambahBeritaActivity extends AppCompatActivity {
     ImageView imgbrt, close;
     Button simpanbrt;
     EditText titlebrt, descbrt;
+    long timestamp;
     String imageURL;
     Uri uri;
 
@@ -93,14 +95,20 @@ public class TambahBeritaActivity extends AppCompatActivity {
         simpanbrt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                timestamp = System.currentTimeMillis();
                 saveData();
             }
         });
     }
 
     public void saveData(){
+        String title = titlebrt.getText().toString();
+        String desc = descbrt.getText().toString();
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String username = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+        String userphoto = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString();
 
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images")
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images").child(uid)
                 .child(uri.getLastPathSegment());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(TambahBeritaActivity.this);
@@ -116,7 +124,7 @@ public class TambahBeritaActivity extends AppCompatActivity {
                 while (!uriTask.isComplete());
                 Uri urlImage = uriTask.getResult();
                 imageURL = urlImage.toString();
-                uploadData();
+                uploadData(userphoto, username, title, desc, uid);
                 dialog.dismiss();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -126,17 +134,16 @@ public class TambahBeritaActivity extends AppCompatActivity {
             }
         });
     }
-    public void uploadData(){
-        String title = titlebrt.getText().toString();
-        String desc = descbrt.getText().toString();
+    public void uploadData(String userphoto, String username, String title, String desc, String uid){
 
-        BeritaClass beritaClass = new BeritaClass(title, desc, imageURL);
-
+        BeritaClass beritaClass = new BeritaClass(title, desc, imageURL, userphoto, username, uid);
+        beritaClass.setTimestamp(timestamp);
+        beritaClass.setUid(uid);
         String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 
         String sanitizedDate = currentDate.replaceAll("[^a-zA-Z0-9]", "");
 
-        FirebaseDatabase.getInstance().getReference("Android Berita").child(sanitizedDate)
+        FirebaseDatabase.getInstance().getReference("Android Berita").child(uid).child(sanitizedDate)
                 .setValue(beritaClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

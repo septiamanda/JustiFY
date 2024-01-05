@@ -33,6 +33,15 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <ImageView
+            android:id="@+id/history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="180dp"
+            android:src="@drawable/ic_riwayat"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="75dp"
@@ -42,10 +51,10 @@
                 android:id="@+id/imageView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center|end"
+                android:layout_gravity="center"
                 android:layout_marginEnd="20dp"
+                android:layout_marginStart="5dp"
                 android:paddingTop="20dp"
-                android:layout_marginStart="14dp"
                 android:src="@drawable/add"/>
 
             <TextView
@@ -53,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:text="Berita"
                 android:textColor="@color/white"
-                android:layout_gravity="center|end"
+                android:layout_gravity="center"
                 android:textStyle="bold"
                 android:layout_marginEnd="14dp"/>
         </LinearLayout>
@@ -95,6 +104,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"
-            tools:listitem="@layout/berita"/>
+            tools:listitem="@layout/riwayat_berita"/>
     </LinearLayout>
 </LinearLayout>
