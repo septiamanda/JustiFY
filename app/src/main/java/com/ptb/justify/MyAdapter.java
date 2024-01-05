@@ -34,7 +34,7 @@ public class MyAdapter extends RecyclerView.Adapter<BViewHolder> {
     @NonNull
     @Override
     public BViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.berita, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.riwayat_berita, parent, false);
         return new BViewHolder(view);
     }
 
@@ -43,6 +43,8 @@ public class MyAdapter extends RecyclerView.Adapter<BViewHolder> {
         Glide.with(context).load(dataList.get(position).getBeritaImage()).into(holder.recImage);
         holder.recTitle.setText(dataList.get(position).getBeritaTitle());
         holder.recDesc.setText(dataList.get(position).getBeritaDesc());
+        holder.username.setText(dataList.get(position).getUsername());
+        holder.time.setText(dataList.get(position).getFormatedDate());
 
         holder.recCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +53,9 @@ public class MyAdapter extends RecyclerView.Adapter<BViewHolder> {
                 intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getBeritaImage());
                 intent.putExtra("Description", dataList.get(holder.getAdapterPosition()).getBeritaDesc());
                 intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getBeritaTitle());
+                long timestamp = (long) dataList.get(position).getTimestamp();
+                intent.putExtra("username", dataList.get(holder.getAdapterPosition()).getUsername());
+                intent.putExtra("time", timestamp);
                 intent.putExtra("Key", dataList.get(holder.getAdapterPosition()).getKey());
 
                 context.startActivity(intent);
@@ -72,7 +77,7 @@ public class MyAdapter extends RecyclerView.Adapter<BViewHolder> {
 class BViewHolder extends RecyclerView.ViewHolder{
 
     ImageView recImage;
-    TextView recTitle,recDesc;
+    TextView recTitle,recDesc, time, username;
     CardView recCard;
     public BViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -81,5 +86,9 @@ class BViewHolder extends RecyclerView.ViewHolder{
         recTitle = itemView.findViewById(R.id.recTitle);
         recCard = itemView.findViewById(R.id.card);
         recDesc = itemView.findViewById(R.id.recDesc);
+        time = itemView.findViewById(R.id.time);
+        username = itemView.findViewById(R.id.username);
+
+
     }
 }
