@@ -86,6 +86,16 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+        <activity android:name=".RiwayatBerita"
+            android:exported="false"/>
+        <activity android:name=".DetailRiwayatBerita"
+            android:exported="false"/>
+        <activity android:name=".Lokasi"
+            android:exported="false"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA9JeWCglYKe1bftN48jcJEV5rRRkNqbZg"/>
     </application>
 
 </manifest>
