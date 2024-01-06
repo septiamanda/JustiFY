@@ -26,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     private Uri pickedImgUri = null;
 
     private CardView ic1, ic2, ic3, ic4, ic5, ic6, ic7, ic8, ic9;
+    ImageView ic10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +51,13 @@ public class HomeActivity extends AppCompatActivity {
         ic7 = findViewById(R.id.home_artikel);
         ic8 = findViewById(R.id.home_berita);
         ic9 = findViewById(R.id.home_uu);
+        ic10 = findViewById(R.id.logout);
 
         // ini adalah sebuah intent perpindahan ke halaman lain yg dituju saat di klik
         ic1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "aaaaa", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "Ini Adalah Tentang Korupsi", Toast.LENGTH_SHORT).show();
                 Intent home = new Intent(getApplicationContext(), TentangKorupsi.class);
                 startActivity(home);
             }
@@ -63,7 +65,7 @@ public class HomeActivity extends AppCompatActivity {
         ic2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "aaaaa", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "FaQ", Toast.LENGTH_SHORT).show();
                 Intent home = new Intent(getApplicationContext(), FaqActivity.class);
                 startActivity(home);
             }
@@ -120,8 +122,17 @@ public class HomeActivity extends AppCompatActivity {
         ic9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "aaaaa", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "Undang-Undang", Toast.LENGTH_SHORT).show();
                 Intent home = new Intent(getApplicationContext(), UU.class);
+                startActivity(home);
+            }
+        });
+
+        ic10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomeActivity.this, "", Toast.LENGTH_SHORT).show();
+                Intent home = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(home);
             }
         });
