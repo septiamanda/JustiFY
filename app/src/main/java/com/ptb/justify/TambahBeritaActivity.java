@@ -148,7 +148,7 @@ public class TambahBeritaActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            showNotification("Data berhasil ditambahkan!", "Notifikasi");
+                            showNotification("Berita berhasil ditambahkan!", "Notifikasi");
                             finish();
                         }
                     }
@@ -178,7 +178,7 @@ public class TambahBeritaActivity extends AppCompatActivity {
         Notification.Builder builder = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             builder = new Notification.Builder(this, channelId)
-                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setSmallIcon(R.drawable.logo1)
                     .setContentTitle(title)
                     .setContentText(message)
                     .setAutoCancel(true);
