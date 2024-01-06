@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/balikArtikel"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/ic_back"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="25dp"
@@ -84,7 +84,9 @@
                     android:background="@drawable/rectangle"
                     android:hint="Judul Artikel"
                     android:padding="15dp"
+                    android:gravity="start|end"
                     android:textColor="@color/black"
+                    android:inputType="textMultiLine"
                     android:textSize="15sp" />
 
                 <EditText
@@ -92,7 +94,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:background="@drawable/rectangle"
-                    android:gravity="top"
+                    android:gravity="start|end"
+                    android:inputType="textMultiLine"
                     android:hint="Tuliskan konten artikel Anda "
                     android:padding="15dp"
                     android:textColor="@color/black"
