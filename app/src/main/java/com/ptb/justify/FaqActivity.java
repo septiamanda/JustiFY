@@ -27,24 +27,14 @@ public class FaqActivity extends AppCompatActivity {
         recyclerViewFAQ = findViewById(R.id.rv_faq);
         close = findViewById(R.id.closeFAQ);
 
-
-        String misiText = "1. Menyediakan informasi yang akurat, bermanfaat, dan mudah dipahami tentang korupsi, serta memberikan alat edukasi yang interaktif." +
-                "\n\n2. Memberdayakan pengguna untuk menyampaikan aspirasi mereka dan berpartisipasi dalam forum untuk berbagi pemikiran, pengalaman, dan solusi." +
-                "\n\n3. Menyajikan berita, artikel, dan pembaruan undang-undang terkait korupsi agar pengguna tetap terinformasi tentang perkembangan terbaru.";
         arrayListFAQ = new ArrayList<>();
 
-        arrayListFAQ.add(new FAQClass("Apa itu aplikasi JustiFY?","JustiFY adalah aplikasi inovatif " +
-                "yang didedikasikan untuk memberikan edukasi anti korupsi dan memotivasi partisipasi aktif " +
-                "masyarakat dalam perang melawan praktik korupsi yang merugikan.", false));
-        arrayListFAQ.add(new FAQClass("Visi","Mewujudkan masyarakat yang sadar, berpendidikan, " +
-                "dan proaktif dalam memerangi korupsi untuk menciptakan lingkungan yang adil dan bermoral.", false));
-        arrayListFAQ.add(new FAQClass("Misi", misiText, false));
-        arrayListFAQ.add(new FAQClass("Nilai dan Prinsip","Kami memegang teguh nilai-nilai " +
-                "transparansi, integritas, dan partisipasi aktif dalam semua aspek pengembangan dan pengelolaan JustiFY.", false));
-        arrayListFAQ.add(new FAQClass("Panduan Pengguna","Agar Anda dapat memaksimalkan pengalaman menggunakan JustiFY, " +
-                "kami menyediakan panduan pengguna yang ringkas. Temukan petunjuk langkah demi langkah untuk fitur-fitur kami di bagian FAQ.", false));
-        arrayListFAQ.add(new FAQClass("Kontak dan Dukungan","Butuh bantuan atau punya pertanyaan? " +
-                "Jangan ragu untuk menghubungi tim dukungan kami melalui email di support@justifyapp.com.", false));
+        arrayListFAQ.add(new FAQClass("Apa itu aplikasi JustiFY?","JustiFY adalah sebuah aplikasi mobile yang didesain untuk memberikan edukasi anti korupsi. Aplikasi ini menyajikan berbagai fitur, seperti berita, artikel, forum aspirasi, dan permainan pilihan ganda untuk meningkatkan kesadaran masyarakat mengenai korupsi.\n", false));
+        arrayListFAQ.add(new FAQClass("Apa yang membedakan JustiFY dari aplikasi edukasi lainnya?\n","JustiFY memberikan fokus khusus pada edukasi anti korupsi dengan menyajikan konten yang informatif dan bermanfaat, termasuk berita terkini, artikel, dan forum aspirasi untuk berbagi pemikiran dan pengalaman terkait korupsi.\n", false));
+        arrayListFAQ.add(new FAQClass("Apa kegunaan fitur berita pada aplikasi ini?\n", "Fitur berita memberikan informasi terkini tentang perkembangan terkait korupsi, sehingga pengguna dapat mengetahui tentang isu-isu terkini.\n", false));
+        arrayListFAQ.add(new FAQClass("Bagaimana cara menggunakan fitur game pilihan ganda?\n","Game pilihan ganda dirancang untuk menguji pengetahuan pengguna tentang korupsi secara interaktif. Pengguna dapat menjawab pertanyaan-pertanyaan seputar korupsi dan mendapatkan poin serta pemahaman yang lebih baik.\n", false));
+        arrayListFAQ.add(new FAQClass("Apa manfaat dari forum aspirasi di JustiFY?\n","Forum aspirasi memungkinkan pengguna berinteraksi, berdiskusi, dan berbagi aspirasi terkait korupsi. Hal ini memungkinkan masyarakat untuk saling mendukung dan menyuarakan pandangan mereka.\n", false));
+        arrayListFAQ.add(new FAQClass("Bagaimana cara membuat aspirasi di aplikasi ini?\n","Untuk membuat aspirasi, masuklah ke bagian \"Forum Aspirasi\" lalu pilih opsi \"Buat Aspirasi.\" Isilah formulir dengan judul, isi aspirasi, dan informasi lain yang diperlukan, lalu kirim untuk berbagi pandangan Anda tentang korupsi.\n", false));
 
         adapterFAQ = new AdapterFAQ(arrayListFAQ, FaqActivity.this);
         recyclerViewFAQ.setLayoutManager(new LinearLayoutManager(this));
