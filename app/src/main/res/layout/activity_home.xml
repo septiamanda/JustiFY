@@ -113,7 +113,7 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/ic_addhome"/>
+                            android:src="@drawable/ic_korupsi"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/ic_addhome"/>
+                            android:src="@drawable/ic_faq"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -299,7 +299,7 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/ic_addhome"/>
+                            android:src="@drawable/ic_berita"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -329,7 +329,7 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/ic_addhome"/>
+                            android:src="@drawable/ic_uu"/>
 
                         <TextView
                             android:layout_width="wrap_content"
