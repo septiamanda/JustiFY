@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">JustiFY_Testing</string>
     <string name="opsi_1">Opsi 1</string>
     <string name="opsi_2">opsi_2</string>
     <string name="opsi_3">opsi_3</string>

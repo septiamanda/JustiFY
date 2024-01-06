@@ -96,6 +96,19 @@
             android:exported="false"/>
         <activity android:name=".DetailRiwayatBerita"
             android:exported="false"/>
+        <activity android:name=".ArtikelActivity"
+            android:exported="false"/>
+        <activity android:name=".DetailArtikel"
+            android:exported="false"/>
+        <activity android:name=".RiwayatArtikel"
+            android:exported="false"/>
+        <activity android:name=".DetailRiwayatArtikel"
+            android:exported="false"/>
+        <activity android:name=".TambahArtikel"
+            android:exported="false"/>
+        <activity android:name=".UpdateArtikel"
+            android:exported="false"/>
+
 
 
         <meta-data
