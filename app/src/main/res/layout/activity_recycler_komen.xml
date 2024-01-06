@@ -10,51 +10,55 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="@color/Abu2">
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/recycler_gambar_komen"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:id="@+id/recycler_gambar_komen"
             android:layout_marginStart="20dp"
             android:padding="8dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_add"
-            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"/>
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
 
         <TextView
+            android:id="@+id/recycler_username_komen"
             android:layout_width="180dp"
             android:layout_height="30dp"
-            android:id="@+id/recycler_username_komen"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/recycler_gambar_komen"
             android:text="Username"
             android:textColor="@color/blue"
-            android:textSize="15sp"
-            android:layout_toEndOf="@+id/recycler_gambar_komen"
-            android:layout_marginStart="20dp"/>
+            android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/recycler_time_komen"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:id="@+id/recycler_time_komen"
-            android:hint="Time"
-            android:textColor="@color/blue"
-            android:textSize="10sp"
-            android:textAlignment="center"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/recycler_username_komen"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="100dp"/>
+            android:hint="Time"
+            android:textAlignment="center"
+            android:textColor="@color/blue"
+            android:textSize="10sp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="12dp"
             android:id="@+id/recycler_isi_komen"
-            android:text="Komentar"
-            android:textColor="@color/blue"
-            android:textSize="10sp"
-            android:layout_toEndOf="@+id/recycler_gambar_komen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/recycler_username_komen"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="20dp"/>
+            android:layout_toEndOf="@+id/recycler_gambar_komen"
+            android:text="Komentar"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/blue"
+            android:textSize="10sp" />
 
     </RelativeLayout>
 

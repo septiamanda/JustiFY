@@ -113,7 +113,7 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/ic_addhome"/>
+                            android:src="@drawable/ic_korupsi"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/ic_addhome"/>
+                            android:src="@drawable/ic_faq"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -299,7 +299,7 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/ic_addhome"/>
+                            android:src="@drawable/ic_berita"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -329,13 +329,43 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/ic_addhome"/>
+                            android:src="@drawable/ic_uu"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="15dp"
                             android:text="Undang-Undang"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/home_lokasi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    app:cardElevation="5dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_location"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:text="Lokasi KPK Sumbar"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </GridLayout>

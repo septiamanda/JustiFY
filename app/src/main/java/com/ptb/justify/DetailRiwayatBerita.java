@@ -1,5 +1,6 @@
 package com.ptb.justify;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,7 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -62,16 +65,26 @@ public class DetailRiwayatBerita extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Android Berita").child(uid).child(key);
-                FirebaseStorage storage = FirebaseStorage.getInstance();
-
-                StorageReference storageReference = storage.getReferenceFromUrl(imageUrl);
-                storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                reference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onSuccess(Void unused) {
-                        reference.child(key).removeValue();
-                        Toast.makeText(DetailRiwayatBerita.this, "Deleted", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), RiwayatBerita.class));
-                        finish();
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            FirebaseStorage storage = FirebaseStorage.getInstance();
+                            StorageReference storageReference = storage.getReferenceFromUrl(imageUrl);
+
+                            storageReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(DetailRiwayatBerita.this, "Deleted", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(), RiwayatBerita.class));
+                                        finish();
+                                    } else {
+                                        Toast.makeText(DetailRiwayatBerita.this, "Terjadi Kesalahan Saat Menghapus Gambar", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }
                     }
                 });
             }

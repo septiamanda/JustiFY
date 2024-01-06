@@ -14,25 +14,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AdapterAbout extends RecyclerView.Adapter<AdapterAbout.AbViewHolder> {
+public class AdapterKorupsi extends RecyclerView.Adapter<AdapterKorupsi.KorupsiViewHolder>{
 
-    ArrayList<AboutClass> arrayList;
+    ArrayList<KorupsiActivity> arrayList;
     Context context;
 
-    public AdapterAbout(ArrayList<AboutClass> arrayList, Context context) {
+    public AdapterKorupsi(ArrayList<KorupsiActivity> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }
 
-    @NonNull
-    @Override
-    public AdapterAbout.AbViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterKorupsi.KorupsiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_about, null, false);
-        return new AbViewHolder(view);
+        return new AdapterKorupsi.KorupsiViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterAbout.AbViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull AdapterKorupsi.KorupsiViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tv_title.setText(arrayList.get(position).title);
         holder.tv_desc.setText(arrayList.get(position).description);
 
@@ -60,11 +58,11 @@ public class AdapterAbout extends RecyclerView.Adapter<AdapterAbout.AbViewHolder
         return arrayList.size();
     }
 
-    public class AbViewHolder extends RecyclerView.ViewHolder{
+    public class KorupsiViewHolder extends RecyclerView.ViewHolder{
         TextView tv_title, tv_desc;
         RelativeLayout title_line, desc_line;
         CardView card_about;
-        public AbViewHolder(@NonNull View itemView){
+        public KorupsiViewHolder(@NonNull View itemView){
             super(itemView);
             tv_title = itemView.findViewById(R.id.titleabt);
             tv_desc = itemView.findViewById(R.id.descabt);

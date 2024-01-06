@@ -32,7 +32,7 @@ import com.google.firebase.storage.UploadTask;
 
 public class UpdateBerita extends AppCompatActivity {
 
-    ImageView updateImage;
+    ImageView updateImage, close;
     Button updateButton;
     EditText updateDesc, updateTitle;
     String title, desc, username, userphoto, uid;
@@ -46,6 +46,8 @@ public class UpdateBerita extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_berita);
+
+        close = findViewById(R.id.close3);
 
         updateButton = findViewById(R.id.updatebrt);
         updateDesc = findViewById(R.id.updateDesc);
@@ -91,6 +93,14 @@ public class UpdateBerita extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveData();
+                Intent intent = new Intent(UpdateBerita.this, RiwayatBerita.class);
+                startActivity(intent);
+            }
+        });
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Intent intent = new Intent(UpdateBerita.this, RiwayatBerita.class);
                 startActivity(intent);
             }
