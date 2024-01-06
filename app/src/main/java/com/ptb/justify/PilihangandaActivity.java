@@ -63,7 +63,7 @@ public class PilihangandaActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                     Toast.makeText(PilihangandaActivity.this, "Haloo!", Toast.LENGTH_SHORT).show();
-                Intent home = new Intent(getApplicationContext(), KuisActivity.class);
+                Intent home = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(home);
             }
         });

@@ -56,12 +56,9 @@ public class DetailBerita extends AppCompatActivity {
             imageUrl = bundle.getString("Image");
             Glide.with(this).load(bundle.getString("Image")).into(detailImage);
 
-
         }
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String uid = auth.getCurrentUser().getUid();
-
-
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override

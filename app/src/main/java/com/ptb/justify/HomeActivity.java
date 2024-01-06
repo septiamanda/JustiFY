@@ -64,7 +64,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(HomeActivity.this, "aaaaa", Toast.LENGTH_SHORT).show();
-                Intent home = new Intent(getApplicationContext(), FAQClass.class);
+                Intent home = new Intent(getApplicationContext(), FaqActivity.class);
                 startActivity(home);
             }
         });
@@ -96,16 +96,16 @@ public class HomeActivity extends AppCompatActivity {
         ic6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "aaaaa", Toast.LENGTH_SHORT).show();
-                Intent home = new Intent(getApplicationContext(), KuisActivity.class);
+                Toast.makeText(HomeActivity.this, "Selamat Bermain", Toast.LENGTH_SHORT).show();
+                Intent home = new Intent(getApplicationContext(), PilihangandaActivity.class);
                 startActivity(home);
             }
         });
         ic7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "aaaaa", Toast.LENGTH_SHORT).show();
-                Intent home = new Intent(getApplicationContext(), MainActivity.class);
+                Toast.makeText(HomeActivity.this, "Artikel", Toast.LENGTH_SHORT).show();
+                Intent home = new Intent(getApplicationContext(), ArtikelActivity.class);
                 startActivity(home);
             }
         });

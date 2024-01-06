@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UpdateArtikel">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/birumuda"
+        android:orientation="horizontal"
+        android:elevation="7dp">
+
+        <ImageView
+            android:id="@+id/balikArtikel"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_back"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
+            app:tint="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"/>
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="20dp"
+                android:background="@drawable/rectangle1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:text="Update Data Artikel "
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/editImgArtikel"
+                    android:layout_width="330dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/rectangle"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/ic_addgambar"
+                    android:scaleType="fitCenter"/>
+
+                <EditText
+                    android:id="@+id/editJudulArtikel"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/rectangle"
+                    android:hint="Judul Artikel"
+                    android:padding="15dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/editIsiArtikel"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@drawable/rectangle"
+                    android:gravity="top"
+                    android:hint="Tuliskan konten artikel Anda "
+                    android:padding="15dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/editSimpanArtikel"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:text="Simpan"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
