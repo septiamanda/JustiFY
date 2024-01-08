@@ -379,7 +379,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="15dp"
-                            android:text="Lokasi KPK Sumbar"/>
+                            android:text="GISFY"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </GridLayout>
