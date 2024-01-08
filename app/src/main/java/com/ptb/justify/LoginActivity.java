@@ -63,10 +63,13 @@ public class LoginActivity extends AppCompatActivity {
                         loginkatasandi.setError("Kata Sandi Salah");
                     }
                 } else if(email.isEmpty()) {
-                    loginemail.setError("Email tidak ditemukan");
+                    loginemail.setError("Email tidak boleh kosong");
+                } else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    loginemail.setError("Format Email tidak sesuai");
                 } else {
                     loginemail.setError("Masukkan Email yang benar");
                 }
+                Toast.makeText(LoginActivity.this, "Login Gagal", Toast.LENGTH_SHORT).show();
             }
         });
 

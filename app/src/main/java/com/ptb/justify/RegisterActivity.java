@@ -88,10 +88,17 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (user.isEmpty()) {
                     registeremail.setError("Email tidak boleh kosong");
+                    return;
                 }
                 if (pass.isEmpty()) {
                     registerkatasandi.setError("Kata sandi tidak boleh kosong");
-                } else if(!pass.equals(konfirmasi)){
+                    return;
+                }
+                if (pickedImgUri == null) {
+                    Toast.makeText(RegisterActivity.this, "Pilih gambar pengguna", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!pass.equals(konfirmasi)) {
                     Toast.makeText(RegisterActivity.this, "Password tidak sesuai", Toast.LENGTH_SHORT).show();
                 } else {
                     CreateUserAccount(user, notelepon, username, pass);
@@ -119,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
                     updateUserInfo(username, pickedImgUri, auth.getCurrentUser());
                 }
                 else{
-                    showMessage("account creation failed" + task.getException().getMessage());
+                    showMessage("Gagal menambahkan akun" + task.getException().getMessage());
                 }
             }
         });
