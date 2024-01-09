@@ -1,8 +1,10 @@
 package com.ptb.justify;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -63,33 +65,51 @@ public class DetailRiwayatArtikel extends AppCompatActivity {
         hapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Android Artikel").child(uid).child(key);
-                reference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                // Munculkan dialog konfirmasi sebelum menghapus
+                AlertDialog.Builder builder = new AlertDialog.Builder(DetailRiwayatArtikel.this);
+                builder.setTitle("Konfirmasi Hapus");
+                builder.setMessage("Apakah yakin ingin menghapus artikel ini?");
+                builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseStorage storage = FirebaseStorage.getInstance();
-                            StorageReference storageReference = storage.getReferenceFromUrl(imageUrl);
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Hapus artikel jika pengguna menekan tombol "Ya"
+                        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Android Artikel").child(uid).child(key);
+                        reference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    FirebaseStorage storage = FirebaseStorage.getInstance();
+                                    StorageReference storageReference = storage.getReferenceFromUrl(imageUrl);
 
-                            storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Toast.makeText(DetailRiwayatArtikel.this, "Artikel berhasil dihapus", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(DetailRiwayatArtikel.this, RiwayatArtikel.class);
-                                    startActivity(intent);
-                                    finish();
+                                    storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(DetailRiwayatArtikel.this, "Artikel berhasil dihapus", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(DetailRiwayatArtikel.this, RiwayatArtikel.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(DetailRiwayatArtikel.this, "Terjadi kesalahan saat menghapus Gambar", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                } else {
+                                    Toast.makeText(DetailRiwayatArtikel.this, "Terjadi kesalahan saat menghapus artikel", Toast.LENGTH_SHORT).show();
                                 }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(DetailRiwayatArtikel.this, "Terjadi kesalahan saat menghapus Gambar", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        } else {
-                            Toast.makeText(DetailRiwayatArtikel.this, "Terjadi kesalahan saat menghapus artikel", Toast.LENGTH_SHORT).show();
-                        }
+                            }
+                        });
                     }
                 });
+                builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Batalkan penghapusan jika pengguna menekan tombol "Tidak"
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.show();
             }
         });
 

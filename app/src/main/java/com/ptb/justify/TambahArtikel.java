@@ -150,7 +150,7 @@ public class TambahArtikel extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            showNotification("Data berhasil ditambahkan!", "Notifikasi");
+                            showNotification("Artikel Berhasil Dibuat!", "Notifikasi");
                             finish();
                         }
                     }

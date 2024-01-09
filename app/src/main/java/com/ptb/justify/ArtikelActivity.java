@@ -56,10 +56,10 @@ public class ArtikelActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
 
-        dataList = new ArrayList<>();
-
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String uid = auth.getCurrentUser().getUid();
+
+        dataList = new ArrayList<>();
 
         adapter = new AdapterArtikel(ArtikelActivity.this, dataList);
         recyclerView.setAdapter(adapter);
@@ -67,7 +67,7 @@ public class ArtikelActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("Android Artikel");
         dialog.show();
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 dataList.clear();
