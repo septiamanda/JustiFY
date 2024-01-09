@@ -9,6 +9,14 @@
     android:background="@drawable/loginbg"
     android:padding="25dp">
 
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPassword" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,6 +31,7 @@
             android:textSize="30dp"
             android:layout_marginTop="90dp"
             android:gravity="center"/>
+
 
         <ImageView
             android:id="@+id/usergambar"
@@ -71,12 +80,14 @@
             android:id="@+id/register_katasandi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
             android:background="@drawable/rectangle1"
+            android:layout_marginTop="18dp"
             android:hint="Kata Sandi"
             android:paddingLeft="25dp"
+            android:ems="10"
+            android:textStyle="bold"
             android:textColor="@color/black"
-            android:textStyle="bold"/>
+            android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/register_konfirmasi"
@@ -86,8 +97,10 @@
             android:background="@drawable/rectangle1"
             android:hint="Konfirmasi Kata Sandi"
             android:paddingLeft="25dp"
+            android:ems="10"
             android:textColor="@color/black"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:inputType="textPassword"/>
 
         <Button
             android:id="@+id/register_button"

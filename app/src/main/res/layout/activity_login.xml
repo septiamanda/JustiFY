@@ -47,12 +47,14 @@
             android:id="@+id/login_katasandi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
             android:background="@drawable/rectangle1"
+            android:layout_marginTop="18dp"
             android:hint="Kata Sandi"
             android:paddingLeft="25dp"
+            android:ems="10"
+            android:textStyle="bold"
             android:textColor="@color/black"
-            android:textStyle="bold"/>
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/login_button"
