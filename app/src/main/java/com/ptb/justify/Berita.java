@@ -64,7 +64,7 @@ public class Berita extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("Android Berita");
         dialog.show();
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 dataList.clear();
