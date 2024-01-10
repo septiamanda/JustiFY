@@ -107,18 +107,5 @@
             android:textSize="14sp"
             android:textColor="@color/black"
             android:layout_marginBottom="15dp"/>
-
-        <Button
-            android:id="@+id/ulang_permainan"
-            android:layout_width="193dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:backgroundTint="@color/blue"
-            android:textColor="@color/white"
-            android:text="@string/ulang_permainan"
-            android:textStyle="bold" />
     </LinearLayout>
-
-
 </LinearLayout>

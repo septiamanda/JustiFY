@@ -113,7 +113,7 @@ public class AspirasiDetailActivity extends AppCompatActivity {
             detailalamat.setText(bundle.getString("alamat"));
             detaildesc.setText(bundle.getString("desc"));
             key = bundle.getString("Key");
-            imageUrl = bundle.getString("Image");
+            imageUrl = bundle.getString("gambar");
         }
 
         FirebaseAuth auth = FirebaseAuth.getInstance();

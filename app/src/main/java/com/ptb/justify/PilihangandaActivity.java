@@ -55,27 +55,19 @@ public class PilihangandaActivity extends AppCompatActivity {
         opsiB = findViewById(R.id.opsibutton_B);
         opsiC = findViewById(R.id.opsibutton_C);
         opsiD = findViewById(R.id.opsibutton_D);
-        ulangpermainan = findViewById(R.id.ulang_permainan);
         tekssoal = findViewById(R.id.teks_soal);
         balik = findViewById(R.id.imageLeft);
 
         balik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Toast.makeText(PilihangandaActivity.this, "Haloo!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PilihangandaActivity.this, "Haloo!", Toast.LENGTH_SHORT).show();
                 Intent home = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(home);
             }
         });
 
         tampilPertanyaan();
-        ulangpermainan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                restartQuiz();
-                tampilPertanyaan();
-            }
-        });
 
         opsiA.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,21 +168,9 @@ public class PilihangandaActivity extends AppCompatActivity {
     }
 
     private void tampilNilai() {
-        Toast.makeText(this, "Nilai Anda: " + skor + " dari " + soal.length, Toast.LENGTH_SHORT).show();
-        ulangpermainan.setEnabled(true);
+        Intent intent = new Intent(PilihangandaActivity.this, SkorActivity.class);
+        intent.putExtra("Skor Anda adalah", skor);
+        startActivity(intent);
+        finish();
     }
-
-    private void restartQuiz() {
-        indeksSoalSaatIni = 0;
-        skor = 0;
-        ulangpermainan.setEnabled(false);
-        opsiA.setEnabled(true);
-        opsiB.setEnabled(true);
-        opsiC.setEnabled(true);
-        opsiD.setEnabled(true);
-        tampilPertanyaan();
-
-    }
-
-
 }

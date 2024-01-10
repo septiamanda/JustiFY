@@ -59,10 +59,14 @@ public class UpdateArtikel extends AppCompatActivity {
                     public void onActivityResult(ActivityResult result) {
                         if (result.getResultCode() == Activity.RESULT_OK) {
                             Intent data = result.getData();
-                            uri = data.getData();
-                            upGambar.setImageURI(uri);
-                        } else {
-                            Toast.makeText(UpdateArtikel.this, "Tidak ada gambar yang dipilih", Toast.LENGTH_SHORT).show();
+                            if (data != null) {
+                                uri = data.getData();
+                                if (uri != null) {
+                                    upGambar.setImageURI(uri);
+                                } else {
+                                    Toast.makeText(UpdateArtikel.this, "Tidak ada gambar yang dipilih", Toast.LENGTH_SHORT).show();
+                                }
+                            }
                         }
                     }
                 }
@@ -78,7 +82,7 @@ public class UpdateArtikel extends AppCompatActivity {
         }
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        String uid = auth.getCurrentUser().getUid();
+        uid = auth.getCurrentUser().getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference("Android Artikel").child(uid).child(key);
 
         upGambar.setOnClickListener(new View.OnClickListener() {
@@ -99,36 +103,51 @@ public class UpdateArtikel extends AppCompatActivity {
     }
 
     private void saveData() {
-        storageReference = FirebaseStorage.getInstance().getReference().child("Android Images").child(uri.getLastPathSegment());
+        if (uri != null) {
+            storageReference = FirebaseStorage.getInstance().getReference().child("Android Images").child(uri.getLastPathSegment());
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(UpdateArtikel.this);
-        builder.setCancelable(false);
-        builder.setView(R.layout.progress_layout);
-        AlertDialog dialog = builder.create();
-        dialog.show();
+            AlertDialog.Builder builder = new AlertDialog.Builder(UpdateArtikel.this);
+            builder.setCancelable(false);
+            builder.setView(R.layout.progress_layout);
+            AlertDialog dialog = builder.create();
+            dialog.show();
 
-        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                while (!uriTask.isComplete()) ;
-                Uri urlImage = uriTask.getResult();
-                imageUrl = urlImage.toString();
-                updateData();
-                dialog.dismiss();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                dialog.dismiss();
-            }
-        });
+            storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                    uriTask.addOnCompleteListener(new OnCompleteListener<Uri>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Uri> task) {
+                            if (task.isSuccessful()) {
+                                imageUrl = task.getResult().toString();
+                                updateData();
+                                dialog.dismiss();
+                            } else {
+                                dialog.dismiss();
+                                Toast.makeText(UpdateArtikel.this, "Gagal mengambil URL gambar.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    dialog.dismiss();
+                    Toast.makeText(UpdateArtikel.this, "Gagal mengunggah gambar.", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            updateData();
+        }
     }
 
     private void updateData() {
         judul = upJudul.getText().toString().trim();
         isi = upIsi.getText().toString().trim();
         uphoto = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String uname = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+
 
         ArtikelClass artikelClass = new ArtikelClass(judul, isi, imageUrl, uphoto);
         artikelClass.setTimestamp(System.currentTimeMillis());
@@ -141,13 +160,15 @@ public class UpdateArtikel extends AppCompatActivity {
                     reference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(UpdateArtikel.this, "Diperbarui", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UpdateArtikel.this, "Artikel Berhasil Diperbarui", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(UpdateArtikel.this, RiwayatArtikel.class);
+                            startActivity(intent);
                             finish();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(UpdateArtikel.this, "Terjadi kesalahan saat menghapus Gambar", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UpdateArtikel.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
